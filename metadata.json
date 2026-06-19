@@ -1,0 +1,6 @@
+{
+  "name": "Flag Guesser",
+  "description": "Guess the country by its flag in Easy, Hard, and Reverse modes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
