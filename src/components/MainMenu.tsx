@@ -4,6 +4,7 @@ import { GameMode, Difficulty } from '../types';
 import { BlurText } from './BlurText';
 import { Settings, Trophy, BarChart2 } from 'lucide-react';
 import { SpotlightButton } from './SpotlightButton';
+import { useI18n } from '../i18n';
 
 interface MainMenuProps {
   startGame: (mode: GameMode, difficulty: Difficulty) => void;
@@ -21,6 +22,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
   initialDifficulty
 }) => {
   const [difficulty, setDifficulty] = useState<Difficulty>(initialDifficulty);
+  const { t } = useI18n();
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -65,7 +67,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
 
       <div className="mb-10 text-center relative z-20">
         <BlurText 
-          text="Flag Guesser" 
+          text={t.title} 
           delay={50} 
           animateBy="letters" 
           direction="top" 
@@ -77,7 +79,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
           transition={{ delay: 0.8 }}
           className="text-zinc-400 mt-3 font-medium text-sm sm:text-base"
         >
-          Test your geography knowledge
+          {t.subtitle}
         </motion.p>
       </div>
 
@@ -88,7 +90,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
         className="w-full space-y-3 relative z-20"
       >
         <div className="flex flex-col gap-2 mb-6">
-          <label className="text-zinc-400 text-sm font-medium uppercase tracking-wider text-center">Select Difficulty</label>
+          <label className="text-zinc-400 text-sm font-medium uppercase tracking-wider text-center">{t.selectDifficulty}</label>
           <div className="flex bg-zinc-900 border border-zinc-800 rounded-xl p-1 relative shadow-inner">
             <motion.div 
               className="absolute top-1 bottom-1 rounded-lg"
@@ -104,25 +106,25 @@ export const MainMenu: React.FC<MainMenuProps> = ({
               onClick={() => setDifficulty(1)} 
               className={`flex-1 py-1 sm:py-2 text-[11px] sm:text-xs font-bold z-10 transition-colors ${difficulty === 1 ? 'text-black' : 'text-zinc-500'}`}
             >
-              EASY
+              {t.easy}
             </button>
             <button 
               onClick={() => setDifficulty(2)} 
               className={`flex-1 py-1 sm:py-2 text-[11px] sm:text-xs font-bold z-10 transition-colors ${difficulty === 2 ? 'text-black' : 'text-zinc-500'}`}
             >
-              MED
+              {t.med}
             </button>
             <button 
               onClick={() => setDifficulty(3)} 
               className={`flex-1 py-1 sm:py-2 text-[11px] sm:text-xs font-bold z-10 transition-colors ${difficulty === 3 ? 'text-white' : 'text-zinc-500'}`}
             >
-              HARD
+              {t.hard}
             </button>
             <button 
               onClick={() => setDifficulty(4)} 
               className={`flex-1 py-1 sm:py-2 text-[11px] sm:text-xs font-bold z-10 transition-colors ${difficulty === 4 ? 'text-white' : 'text-zinc-500'}`}
             >
-              HARDCORE
+              {t.hardcore}
             </button>
           </div>
         </div>
@@ -130,36 +132,36 @@ export const MainMenu: React.FC<MainMenuProps> = ({
         <SpotlightButton 
           variants={item}
           onClick={() => startGame('SELECTIVE', difficulty)}
-          className="w-full p-5 bg-zinc-900 border border-zinc-800 rounded-2xl text-left shadow-lg"
+          className="w-full p-5 bg-zinc-900 border border-zinc-800 rounded-2xl text-start shadow-lg"
           spotlightColor="rgba(99, 102, 241, 0.25)"
         >
           <div className="flex flex-col items-start w-full pointer-events-auto">
-            <h3 className="text-xl font-bold text-white mb-1">Selective Mode</h3>
-            <p className="text-zinc-500 text-sm font-medium">See the flag, pick from 4 choices.</p>
+            <h3 className="text-xl font-bold text-white mb-1">{t.selectiveMode}</h3>
+            <p className="text-zinc-500 text-sm font-medium">{t.selectiveDesc}</p>
           </div>
         </SpotlightButton>
 
         <SpotlightButton 
           variants={item}
           onClick={() => startGame('REVERSE', difficulty)}
-          className="w-full p-5 bg-zinc-900 border border-zinc-800 rounded-2xl text-left shadow-lg"
+          className="w-full p-5 bg-zinc-900 border border-zinc-800 rounded-2xl text-start shadow-lg"
           spotlightColor="rgba(244, 63, 94, 0.25)"
         >
           <div className="flex flex-col items-start w-full pointer-events-auto">
-            <h3 className="text-xl font-bold text-white mb-1">Reverse Mode</h3>
-            <p className="text-zinc-500 text-sm font-medium">See the name, pick the flag.</p>
+            <h3 className="text-xl font-bold text-white mb-1">{t.reverseMode}</h3>
+            <p className="text-zinc-500 text-sm font-medium">{t.reverseDesc}</p>
           </div>
         </SpotlightButton>
 
         <SpotlightButton 
           variants={item}
           onClick={() => startGame('WRITE', difficulty)}
-          className="w-full p-5 bg-zinc-900 border border-zinc-800 rounded-2xl text-left shadow-lg"
+          className="w-full p-5 bg-zinc-900 border border-zinc-800 rounded-2xl text-start shadow-lg"
           spotlightColor="rgba(16, 185, 129, 0.25)"
         >
           <div className="flex flex-col items-start w-full pointer-events-auto">
-            <h3 className="text-xl font-bold text-white mb-1">Write Mode</h3>
-            <p className="text-zinc-500 text-sm font-medium">See the flag, type the exact name.</p>
+            <h3 className="text-xl font-bold text-white mb-1">{t.writeMode}</h3>
+            <p className="text-zinc-500 text-sm font-medium">{t.writeDesc}</p>
           </div>
         </SpotlightButton>
       </motion.div>

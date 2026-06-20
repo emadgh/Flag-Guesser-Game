@@ -1,10 +1,11 @@
 import { motion, AnimatePresence } from 'motion/react';
 import React, { useState, useEffect, useRef } from 'react';
 import { GameMode } from '../types';
-import { getFlagUrl, Country } from '../data/countries';
+import { getFlagUrl, Country, getCountryName } from '../data/countries';
 import { BlurText } from './BlurText';
 import { Settings, X, Heart } from 'lucide-react';
 import { SpotlightButton } from './SpotlightButton';
+import { useI18n } from '../i18n';
 
 interface GameViewProps {
   mode: GameMode;
@@ -26,6 +27,7 @@ export const GameView: React.FC<GameViewProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const { t, language } = useI18n();
 
   useEffect(() => {
     setInputValue('');
@@ -33,6 +35,27 @@ export const GameView: React.FC<GameViewProps> = ({
       inputRef.current.focus();
     }
   }, [currentCountry, mode]);
+
+  useEffect(() => {
+    if (feedback !== 'NONE' || mode === 'WRITE') return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (mode === 'SELECTIVE') {
+        const num = parseInt(e.key);
+        if (num >= 1 && num <= 4 && options[num - 1]) {
+          submitAnswer(options[num - 1].name);
+        }
+      } else if (mode === 'REVERSE') {
+        const num = parseInt(e.key);
+        if (num >= 1 && num <= 4 && options[num - 1]) {
+          submitAnswer(options[num - 1].name);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [feedback, mode, options, submitAnswer]);
 
   const handleInputSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,17 +88,17 @@ export const GameView: React.FC<GameViewProps> = ({
 
         <div className="flex gap-4 sm:gap-6 items-center flex-1 justify-center">
           <div className="flex flex-col items-center">
-            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">Score</span>
+            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">{t.score}</span>
             <span className="text-xl font-mono text-indigo-300 font-bold leading-none">{score}</span>
           </div>
           <div className="w-px h-6 bg-zinc-800 hidden sm:block" />
           <div className="flex flex-col items-center">
-            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">Streak</span>
+            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">{t.streak}</span>
             <span className="text-xl font-mono text-amber-300 font-bold leading-none">{streak}</span>
           </div>
           <div className="w-px h-6 bg-zinc-800 hidden sm:block" />
           <div className="flex flex-col items-center">
-            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">Lives</span>
+            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">{t.lives}</span>
             <div className="flex gap-1">
               {[...Array(3)].map((_, i) => (
                 <Heart 
@@ -88,7 +111,7 @@ export const GameView: React.FC<GameViewProps> = ({
           </div>
           <div className="w-px h-6 bg-zinc-800" />
           <div className="flex flex-col items-center">
-            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">Time</span>
+            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest hidden sm:block">{t.time}</span>
             <motion.span 
               animate={{
                 scale: timeLeft <= 5 && timeLeft > 0 ? [1, 1.1, 1] : 1,
@@ -126,7 +149,7 @@ export const GameView: React.FC<GameViewProps> = ({
             {mode === 'REVERSE' ? (
               <div className="mb-10 text-center flex flex-col items-center justify-center min-h-[140px]">
                 <BlurText 
-                  text={currentCountry.name} 
+                  text={getCountryName(currentCountry, language)} 
                   className="text-4xl sm:text-5xl font-black text-white px-2 text-center" 
                   animateBy="words" 
                 />
@@ -150,13 +173,13 @@ export const GameView: React.FC<GameViewProps> = ({
                         feedback === 'CORRECT' ? 'bg-emerald-500/30' : 'bg-rose-500/30'
                       }`}
                     >
-                      {feedback === 'WRONG' && mode === 'WRITE' && (
+                      {feedback === 'WRONG' && (mode === 'WRITE' || mode === 'SELECTIVE') && (
                         <motion.span 
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           className="text-white font-bold text-xl px-5 py-3 bg-black/80 rounded-xl backdrop-blur-md shadow-2xl text-center"
                         >
-                          {currentCountry.name}
+                          {getCountryName(currentCountry, language)}
                         </motion.span>
                       )}
                     </motion.div>
@@ -172,10 +195,11 @@ export const GameView: React.FC<GameViewProps> = ({
                   <input
                     ref={inputRef}
                     type="text"
+                    dir="auto"
                     value={inputValue}
                     onChange={e => setInputValue(e.target.value)}
                     disabled={feedback !== 'NONE'}
-                    placeholder="Type country name..."
+                    placeholder={t.typeCountryName}
                     className="flex-1 bg-zinc-900 border border-zinc-700 text-white px-5 py-4 rounded-2xl outline-none focus:border-indigo-500 transition-colors disabled:opacity-50 text-lg shadow-inner"
                   />
                   <SpotlightButton 
@@ -183,7 +207,7 @@ export const GameView: React.FC<GameViewProps> = ({
                     disabled={feedback !== 'NONE' || !inputValue.trim()}
                     className="bg-indigo-600 border border-indigo-500/50 text-white px-8 font-bold rounded-2xl hover:bg-indigo-500 transition-colors disabled:opacity-50"
                   >
-                    Guess
+                    {t.guess}
                   </SpotlightButton>
                 </form>
               ) : mode === 'REVERSE' ? (
@@ -227,7 +251,7 @@ export const GameView: React.FC<GameViewProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                   {options.map((opt, i) => {
                     const status = getOptionStatus(opt.name);
-                    let btnClass = "w-full p-4 rounded-xl font-bold transition-all border outline-none text-left ";
+                    let btnClass = "w-full p-4 rounded-xl font-bold transition-all border outline-none text-start relative ";
                     let spotlightColor = "rgba(167, 139, 250, 0.2)";
 
                     if (status === 'default') {
@@ -253,7 +277,10 @@ export const GameView: React.FC<GameViewProps> = ({
                         className={btnClass}
                         spotlightColor={spotlightColor}
                       >
-                        <div className="w-full text-left pointer-events-auto">{opt.name}</div>
+                        <div className="flex items-center gap-3 w-full pointer-events-auto">
+                          <span className="text-[10px] font-mono text-zinc-600 bg-zinc-800 px-1.5 py-0.5 rounded">{i + 1}</span>
+                          <div className="w-full text-start">{getCountryName(opt, language)}</div>
+                        </div>
                       </SpotlightButton>
                     )
                   })}

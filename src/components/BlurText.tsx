@@ -51,7 +51,7 @@ export const BlurText: React.FC<BlurTextProps> = ({
         <motion.span
           key={index}
           variants={item}
-          className="inline-block mr-[0.25em]"
+          className="inline-block me-[0.25em]"
         >
           {element === ' ' ? '\u00A0' : element}
         </motion.span>

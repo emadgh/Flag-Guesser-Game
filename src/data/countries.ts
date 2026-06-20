@@ -1,1260 +1,264 @@
 export interface Country {
   name: string;
+  nameFa: string;
   code: string;
   difficulty: number; // 1: Easy, 2: Medium, 3: Hard
 }
 
+export const getCountryName = (country: Country, lang: 'en' | 'fa') =>
+  lang === 'fa' ? country.nameFa : country.name;
+
 export const COUNTRIES: Country[] = [
-  {
-    "name": "Afghanistan",
-    "code": "af",
-    "difficulty": 1
-  },
-  {
-    "name": "Åland Islands",
-    "code": "ax",
-    "difficulty": 3
-  },
-  {
-    "name": "Albania",
-    "code": "al",
-    "difficulty": 2
-  },
-  {
-    "name": "Algeria",
-    "code": "dz",
-    "difficulty": 1
-  },
-  {
-    "name": "American Samoa",
-    "code": "as",
-    "difficulty": 3
-  },
-  {
-    "name": "Andorra",
-    "code": "ad",
-    "difficulty": 3
-  },
-  {
-    "name": "Angola",
-    "code": "ao",
-    "difficulty": 3
-  },
-  {
-    "name": "Anguilla",
-    "code": "ai",
-    "difficulty": 3
-  },
-  {
-    "name": "Antarctica",
-    "code": "aq",
-    "difficulty": 1
-  },
-  {
-    "name": "Antigua and Barbuda",
-    "code": "ag",
-    "difficulty": 3
-  },
-  {
-    "name": "Argentina",
-    "code": "ar",
-    "difficulty": 1
-  },
-  {
-    "name": "Armenia",
-    "code": "am",
-    "difficulty": 2
-  },
-  {
-    "name": "Aruba",
-    "code": "aw",
-    "difficulty": 3
-  },
-  {
-    "name": "Australia",
-    "code": "au",
-    "difficulty": 1
-  },
-  {
-    "name": "Austria",
-    "code": "at",
-    "difficulty": 1
-  },
-  {
-    "name": "Azerbaijan",
-    "code": "az",
-    "difficulty": 2
-  },
-  {
-    "name": "Bahamas",
-    "code": "bs",
-    "difficulty": 2
-  },
-  {
-    "name": "Bahrain",
-    "code": "bh",
-    "difficulty": 3
-  },
-  {
-    "name": "Bangladesh",
-    "code": "bd",
-    "difficulty": 2
-  },
-  {
-    "name": "Barbados",
-    "code": "bb",
-    "difficulty": 3
-  },
-  {
-    "name": "Belarus",
-    "code": "by",
-    "difficulty": 2
-  },
-  {
-    "name": "Belgium",
-    "code": "be",
-    "difficulty": 1
-  },
-  {
-    "name": "Belize",
-    "code": "bz",
-    "difficulty": 2
-  },
-  {
-    "name": "Benin",
-    "code": "bj",
-    "difficulty": 2
-  },
-  {
-    "name": "Bermuda",
-    "code": "bm",
-    "difficulty": 3
-  },
-  {
-    "name": "Bhutan",
-    "code": "bt",
-    "difficulty": 2
-  },
-  {
-    "name": "Bolivia",
-    "code": "bo",
-    "difficulty": 1
-  },
-  {
-    "name": "Bosnia and Herzegovina",
-    "code": "ba",
-    "difficulty": 2
-  },
-  {
-    "name": "Botswana",
-    "code": "bw",
-    "difficulty": 1
-  },
-  {
-    "name": "Bouvet Island",
-    "code": "bv",
-    "difficulty": 3
-  },
-  {
-    "name": "Brazil",
-    "code": "br",
-    "difficulty": 1
-  },
-  {
-    "name": "British Indian Ocean Territory",
-    "code": "io",
-    "difficulty": 3
-  },
-  {
-    "name": "British Virgin Islands",
-    "code": "vg",
-    "difficulty": 3
-  },
-  {
-    "name": "Brunei",
-    "code": "bn",
-    "difficulty": 3
-  },
-  {
-    "name": "Bulgaria",
-    "code": "bg",
-    "difficulty": 2
-  },
-  {
-    "name": "Burkina Faso",
-    "code": "bf",
-    "difficulty": 2
-  },
-  {
-    "name": "Burundi",
-    "code": "bi",
-    "difficulty": 3
-  },
-  {
-    "name": "Cambodia",
-    "code": "kh",
-    "difficulty": 2
-  },
-  {
-    "name": "Cameroon",
-    "code": "cm",
-    "difficulty": 2
-  },
-  {
-    "name": "Canada",
-    "code": "ca",
-    "difficulty": 1
-  },
-  {
-    "name": "Cape Verde",
-    "code": "cv",
-    "difficulty": 3
-  },
-  {
-    "name": "Caribbean Netherlands",
-    "code": "bq",
-    "difficulty": 3
-  },
-  {
-    "name": "Cayman Islands",
-    "code": "ky",
-    "difficulty": 3
-  },
-  {
-    "name": "Central African Republic",
-    "code": "cf",
-    "difficulty": 1
-  },
-  {
-    "name": "Chad",
-    "code": "td",
-    "difficulty": 1
-  },
-  {
-    "name": "Chile",
-    "code": "cl",
-    "difficulty": 1
-  },
-  {
-    "name": "China",
-    "code": "cn",
-    "difficulty": 1
-  },
-  {
-    "name": "Christmas Island",
-    "code": "cx",
-    "difficulty": 3
-  },
-  {
-    "name": "Cocos (Keeling) Islands",
-    "code": "cc",
-    "difficulty": 3
-  },
-  {
-    "name": "Colombia",
-    "code": "co",
-    "difficulty": 1
-  },
-  {
-    "name": "Comoros",
-    "code": "km",
-    "difficulty": 3
-  },
-  {
-    "name": "Congo",
-    "code": "cg",
-    "difficulty": 2
-  },
-  {
-    "name": "Cook Islands",
-    "code": "ck",
-    "difficulty": 3
-  },
-  {
-    "name": "Costa Rica",
-    "code": "cr",
-    "difficulty": 2
-  },
-  {
-    "name": "Croatia",
-    "code": "hr",
-    "difficulty": 2
-  },
-  {
-    "name": "Cuba",
-    "code": "cu",
-    "difficulty": 2
-  },
-  {
-    "name": "Curaçao",
-    "code": "cw",
-    "difficulty": 3
-  },
-  {
-    "name": "Cyprus",
-    "code": "cy",
-    "difficulty": 3
-  },
-  {
-    "name": "Czechia",
-    "code": "cz",
-    "difficulty": 2
-  },
-  {
-    "name": "Denmark",
-    "code": "dk",
-    "difficulty": 1
-  },
-  {
-    "name": "Djibouti",
-    "code": "dj",
-    "difficulty": 3
-  },
-  {
-    "name": "Dominica",
-    "code": "dm",
-    "difficulty": 3
-  },
-  {
-    "name": "Dominican Republic",
-    "code": "do",
-    "difficulty": 2
-  },
-  {
-    "name": "DR Congo",
-    "code": "cd",
-    "difficulty": 1
-  },
-  {
-    "name": "Ecuador",
-    "code": "ec",
-    "difficulty": 2
-  },
-  {
-    "name": "Egypt",
-    "code": "eg",
-    "difficulty": 1
-  },
-  {
-    "name": "El Salvador",
-    "code": "sv",
-    "difficulty": 2
-  },
-  {
-    "name": "Equatorial Guinea",
-    "code": "gq",
-    "difficulty": 3
-  },
-  {
-    "name": "Eritrea",
-    "code": "er",
-    "difficulty": 3
-  },
-  {
-    "name": "Estonia",
-    "code": "ee",
-    "difficulty": 2
-  },
-  {
-    "name": "Eswatini",
-    "code": "sz",
-    "difficulty": 3
-  },
-  {
-    "name": "Ethiopia",
-    "code": "et",
-    "difficulty": 1
-  },
-  {
-    "name": "Falkland Islands",
-    "code": "fk",
-    "difficulty": 3
-  },
-  {
-    "name": "Faroe Islands",
-    "code": "fo",
-    "difficulty": 3
-  },
-  {
-    "name": "Fiji",
-    "code": "fj",
-    "difficulty": 2
-  },
-  {
-    "name": "Finland",
-    "code": "fi",
-    "difficulty": 1
-  },
-  {
-    "name": "France",
-    "code": "fr",
-    "difficulty": 1
-  },
-  {
-    "name": "French Guiana",
-    "code": "gf",
-    "difficulty": 2
-  },
-  {
-    "name": "French Polynesia",
-    "code": "pf",
-    "difficulty": 3
-  },
-  {
-    "name": "French Southern and Antarctic Lands",
-    "code": "tf",
-    "difficulty": 3
-  },
-  {
-    "name": "Gabon",
-    "code": "ga",
-    "difficulty": 2
-  },
-  {
-    "name": "Gambia",
-    "code": "gm",
-    "difficulty": 2
-  },
-  {
-    "name": "Georgia",
-    "code": "ge",
-    "difficulty": 2
-  },
-  {
-    "name": "Germany",
-    "code": "de",
-    "difficulty": 1
-  },
-  {
-    "name": "Ghana",
-    "code": "gh",
-    "difficulty": 2
-  },
-  {
-    "name": "Gibraltar",
-    "code": "gi",
-    "difficulty": 3
-  },
-  {
-    "name": "Greece",
-    "code": "gr",
-    "difficulty": 1
-  },
-  {
-    "name": "Greenland",
-    "code": "gl",
-    "difficulty": 3
-  },
-  {
-    "name": "Grenada",
-    "code": "gd",
-    "difficulty": 3
-  },
-  {
-    "name": "Guadeloupe",
-    "code": "gp",
-    "difficulty": 3
-  },
-  {
-    "name": "Guam",
-    "code": "gu",
-    "difficulty": 3
-  },
-  {
-    "name": "Guatemala",
-    "code": "gt",
-    "difficulty": 2
-  },
-  {
-    "name": "Guernsey",
-    "code": "gg",
-    "difficulty": 3
-  },
-  {
-    "name": "Guinea",
-    "code": "gn",
-    "difficulty": 2
-  },
-  {
-    "name": "Guinea-Bissau",
-    "code": "gw",
-    "difficulty": 3
-  },
-  {
-    "name": "Guyana",
-    "code": "gy",
-    "difficulty": 2
-  },
-  {
-    "name": "Haiti",
-    "code": "ht",
-    "difficulty": 2
-  },
-  {
-    "name": "Heard Island and McDonald Islands",
-    "code": "hm",
-    "difficulty": 3
-  },
-  {
-    "name": "Honduras",
-    "code": "hn",
-    "difficulty": 2
-  },
-  {
-    "name": "Hong Kong",
-    "code": "hk",
-    "difficulty": 3
-  },
-  {
-    "name": "Hungary",
-    "code": "hu",
-    "difficulty": 2
-  },
-  {
-    "name": "Iceland",
-    "code": "is",
-    "difficulty": 2
-  },
-  {
-    "name": "India",
-    "code": "in",
-    "difficulty": 1
-  },
-  {
-    "name": "Indonesia",
-    "code": "id",
-    "difficulty": 1
-  },
-  {
-    "name": "Iran",
-    "code": "ir",
-    "difficulty": 1
-  },
-  {
-    "name": "Iraq",
-    "code": "iq",
-    "difficulty": 2
-  },
-  {
-    "name": "Ireland",
-    "code": "ie",
-    "difficulty": 2
-  },
-  {
-    "name": "Isle of Man",
-    "code": "im",
-    "difficulty": 3
-  },
-  {
-    "name": "Israel",
-    "code": "il",
-    "difficulty": 2
-  },
-  {
-    "name": "Italy",
-    "code": "it",
-    "difficulty": 1
-  },
-  {
-    "name": "Ivory Coast",
-    "code": "ci",
-    "difficulty": 2
-  },
-  {
-    "name": "Jamaica",
-    "code": "jm",
-    "difficulty": 2
-  },
-  {
-    "name": "Japan",
-    "code": "jp",
-    "difficulty": 1
-  },
-  {
-    "name": "Jersey",
-    "code": "je",
-    "difficulty": 3
-  },
-  {
-    "name": "Jordan",
-    "code": "jo",
-    "difficulty": 2
-  },
-  {
-    "name": "Kazakhstan",
-    "code": "kz",
-    "difficulty": 1
-  },
-  {
-    "name": "Kenya",
-    "code": "ke",
-    "difficulty": 1
-  },
-  {
-    "name": "Kiribati",
-    "code": "ki",
-    "difficulty": 3
-  },
-  {
-    "name": "Kosovo",
-    "code": "xk",
-    "difficulty": 3
-  },
-  {
-    "name": "Kuwait",
-    "code": "kw",
-    "difficulty": 2
-  },
-  {
-    "name": "Kyrgyzstan",
-    "code": "kg",
-    "difficulty": 2
-  },
-  {
-    "name": "Laos",
-    "code": "la",
-    "difficulty": 2
-  },
-  {
-    "name": "Latvia",
-    "code": "lv",
-    "difficulty": 2
-  },
-  {
-    "name": "Lebanon",
-    "code": "lb",
-    "difficulty": 2
-  },
-  {
-    "name": "Lesotho",
-    "code": "ls",
-    "difficulty": 3
-  },
-  {
-    "name": "Liberia",
-    "code": "lr",
-    "difficulty": 2
-  },
-  {
-    "name": "Libya",
-    "code": "ly",
-    "difficulty": 1
-  },
-  {
-    "name": "Liechtenstein",
-    "code": "li",
-    "difficulty": 3
-  },
-  {
-    "name": "Lithuania",
-    "code": "lt",
-    "difficulty": 2
-  },
-  {
-    "name": "Luxembourg",
-    "code": "lu",
-    "difficulty": 3
-  },
-  {
-    "name": "Macau",
-    "code": "mo",
-    "difficulty": 3
-  },
-  {
-    "name": "Madagascar",
-    "code": "mg",
-    "difficulty": 1
-  },
-  {
-    "name": "Malawi",
-    "code": "mw",
-    "difficulty": 3
-  },
-  {
-    "name": "Malaysia",
-    "code": "my",
-    "difficulty": 2
-  },
-  {
-    "name": "Maldives",
-    "code": "mv",
-    "difficulty": 3
-  },
-  {
-    "name": "Mali",
-    "code": "ml",
-    "difficulty": 1
-  },
-  {
-    "name": "Malta",
-    "code": "mt",
-    "difficulty": 3
-  },
-  {
-    "name": "Marshall Islands",
-    "code": "mh",
-    "difficulty": 3
-  },
-  {
-    "name": "Martinique",
-    "code": "mq",
-    "difficulty": 3
-  },
-  {
-    "name": "Mauritania",
-    "code": "mr",
-    "difficulty": 1
-  },
-  {
-    "name": "Mauritius",
-    "code": "mu",
-    "difficulty": 3
-  },
-  {
-    "name": "Mayotte",
-    "code": "yt",
-    "difficulty": 3
-  },
-  {
-    "name": "Mexico",
-    "code": "mx",
-    "difficulty": 1
-  },
-  {
-    "name": "Micronesia",
-    "code": "fm",
-    "difficulty": 3
-  },
-  {
-    "name": "Moldova",
-    "code": "md",
-    "difficulty": 2
-  },
-  {
-    "name": "Monaco",
-    "code": "mc",
-    "difficulty": 3
-  },
-  {
-    "name": "Mongolia",
-    "code": "mn",
-    "difficulty": 1
-  },
-  {
-    "name": "Montenegro",
-    "code": "me",
-    "difficulty": 2
-  },
-  {
-    "name": "Montserrat",
-    "code": "ms",
-    "difficulty": 3
-  },
-  {
-    "name": "Morocco",
-    "code": "ma",
-    "difficulty": 2
-  },
-  {
-    "name": "Mozambique",
-    "code": "mz",
-    "difficulty": 1
-  },
-  {
-    "name": "Myanmar",
-    "code": "mm",
-    "difficulty": 1
-  },
-  {
-    "name": "Namibia",
-    "code": "na",
-    "difficulty": 1
-  },
-  {
-    "name": "Nauru",
-    "code": "nr",
-    "difficulty": 3
-  },
-  {
-    "name": "Nepal",
-    "code": "np",
-    "difficulty": 2
-  },
-  {
-    "name": "Netherlands",
-    "code": "nl",
-    "difficulty": 1
-  },
-  {
-    "name": "New Caledonia",
-    "code": "nc",
-    "difficulty": 2
-  },
-  {
-    "name": "New Zealand",
-    "code": "nz",
-    "difficulty": 2
-  },
-  {
-    "name": "Nicaragua",
-    "code": "ni",
-    "difficulty": 2
-  },
-  {
-    "name": "Niger",
-    "code": "ne",
-    "difficulty": 1
-  },
-  {
-    "name": "Nigeria",
-    "code": "ng",
-    "difficulty": 1
-  },
-  {
-    "name": "Niue",
-    "code": "nu",
-    "difficulty": 3
-  },
-  {
-    "name": "Norfolk Island",
-    "code": "nf",
-    "difficulty": 3
-  },
-  {
-    "name": "North Korea",
-    "code": "kp",
-    "difficulty": 2
-  },
-  {
-    "name": "North Macedonia",
-    "code": "mk",
-    "difficulty": 2
-  },
-  {
-    "name": "Northern Mariana Islands",
-    "code": "mp",
-    "difficulty": 3
-  },
-  {
-    "name": "Norway",
-    "code": "no",
-    "difficulty": 1
-  },
-  {
-    "name": "Oman",
-    "code": "om",
-    "difficulty": 2
-  },
-  {
-    "name": "Pakistan",
-    "code": "pk",
-    "difficulty": 1
-  },
-  {
-    "name": "Palau",
-    "code": "pw",
-    "difficulty": 3
-  },
-  {
-    "name": "Palestine",
-    "code": "ps",
-    "difficulty": 3
-  },
-  {
-    "name": "Panama",
-    "code": "pa",
-    "difficulty": 2
-  },
-  {
-    "name": "Papua New Guinea",
-    "code": "pg",
-    "difficulty": 2
-  },
-  {
-    "name": "Paraguay",
-    "code": "py",
-    "difficulty": 2
-  },
-  {
-    "name": "Peru",
-    "code": "pe",
-    "difficulty": 1
-  },
-  {
-    "name": "Philippines",
-    "code": "ph",
-    "difficulty": 2
-  },
-  {
-    "name": "Pitcairn Islands",
-    "code": "pn",
-    "difficulty": 3
-  },
-  {
-    "name": "Poland",
-    "code": "pl",
-    "difficulty": 2
-  },
-  {
-    "name": "Portugal",
-    "code": "pt",
-    "difficulty": 2
-  },
-  {
-    "name": "Puerto Rico",
-    "code": "pr",
-    "difficulty": 3
-  },
-  {
-    "name": "Qatar",
-    "code": "qa",
-    "difficulty": 2
-  },
-  {
-    "name": "Réunion",
-    "code": "re",
-    "difficulty": 3
-  },
-  {
-    "name": "Romania",
-    "code": "ro",
-    "difficulty": 2
-  },
-  {
-    "name": "Russia",
-    "code": "ru",
-    "difficulty": 1
-  },
-  {
-    "name": "Rwanda",
-    "code": "rw",
-    "difficulty": 2
-  },
-  {
-    "name": "Saint Barthélemy",
-    "code": "bl",
-    "difficulty": 3
-  },
-  {
-    "name": "Saint Helena, Ascension and Tristan da Cunha",
-    "code": "sh",
-    "difficulty": 3
-  },
-  {
-    "name": "Saint Kitts and Nevis",
-    "code": "kn",
-    "difficulty": 3
-  },
-  {
-    "name": "Saint Lucia",
-    "code": "lc",
-    "difficulty": 3
-  },
-  {
-    "name": "Saint Martin",
-    "code": "mf",
-    "difficulty": 3
-  },
-  {
-    "name": "Saint Pierre and Miquelon",
-    "code": "pm",
-    "difficulty": 3
-  },
-  {
-    "name": "Saint Vincent and the Grenadines",
-    "code": "vc",
-    "difficulty": 3
-  },
-  {
-    "name": "Samoa",
-    "code": "ws",
-    "difficulty": 3
-  },
-  {
-    "name": "San Marino",
-    "code": "sm",
-    "difficulty": 3
-  },
-  {
-    "name": "São Tomé and Príncipe",
-    "code": "st",
-    "difficulty": 3
-  },
-  {
-    "name": "Saudi Arabia",
-    "code": "sa",
-    "difficulty": 1
-  },
-  {
-    "name": "Senegal",
-    "code": "sn",
-    "difficulty": 2
-  },
-  {
-    "name": "Serbia",
-    "code": "rs",
-    "difficulty": 2
-  },
-  {
-    "name": "Seychelles",
-    "code": "sc",
-    "difficulty": 3
-  },
-  {
-    "name": "Sierra Leone",
-    "code": "sl",
-    "difficulty": 2
-  },
-  {
-    "name": "Singapore",
-    "code": "sg",
-    "difficulty": 3
-  },
-  {
-    "name": "Sint Maarten",
-    "code": "sx",
-    "difficulty": 3
-  },
-  {
-    "name": "Slovakia",
-    "code": "sk",
-    "difficulty": 2
-  },
-  {
-    "name": "Slovenia",
-    "code": "si",
-    "difficulty": 2
-  },
-  {
-    "name": "Solomon Islands",
-    "code": "sb",
-    "difficulty": 2
-  },
-  {
-    "name": "Somalia",
-    "code": "so",
-    "difficulty": 3
-  },
-  {
-    "name": "South Africa",
-    "code": "za",
-    "difficulty": 1
-  },
-  {
-    "name": "South Georgia",
-    "code": "gs",
-    "difficulty": 3
-  },
-  {
-    "name": "South Korea",
-    "code": "kr",
-    "difficulty": 1
-  },
-  {
-    "name": "South Sudan",
-    "code": "ss",
-    "difficulty": 1
-  },
-  {
-    "name": "Spain",
-    "code": "es",
-    "difficulty": 1
-  },
-  {
-    "name": "Sri Lanka",
-    "code": "lk",
-    "difficulty": 2
-  },
-  {
-    "name": "Sudan",
-    "code": "sd",
-    "difficulty": 1
-  },
-  {
-    "name": "Suriname",
-    "code": "sr",
-    "difficulty": 2
-  },
-  {
-    "name": "Svalbard and Jan Mayen",
-    "code": "sj",
-    "difficulty": 3
-  },
-  {
-    "name": "Sweden",
-    "code": "se",
-    "difficulty": 1
-  },
-  {
-    "name": "Switzerland",
-    "code": "ch",
-    "difficulty": 1
-  },
-  {
-    "name": "Syria",
-    "code": "sy",
-    "difficulty": 2
-  },
-  {
-    "name": "Taiwan",
-    "code": "tw",
-    "difficulty": 2
-  },
-  {
-    "name": "Tajikistan",
-    "code": "tj",
-    "difficulty": 2
-  },
-  {
-    "name": "Tanzania",
-    "code": "tz",
-    "difficulty": 1
-  },
-  {
-    "name": "Thailand",
-    "code": "th",
-    "difficulty": 1
-  },
-  {
-    "name": "Timor-Leste",
-    "code": "tl",
-    "difficulty": 2
-  },
-  {
-    "name": "Togo",
-    "code": "tg",
-    "difficulty": 3
-  },
-  {
-    "name": "Tokelau",
-    "code": "tk",
-    "difficulty": 3
-  },
-  {
-    "name": "Tonga",
-    "code": "to",
-    "difficulty": 3
-  },
-  {
-    "name": "Trinidad and Tobago",
-    "code": "tt",
-    "difficulty": 3
-  },
-  {
-    "name": "Tunisia",
-    "code": "tn",
-    "difficulty": 2
-  },
-  {
-    "name": "Türkiye",
-    "code": "tr",
-    "difficulty": 1
-  },
-  {
-    "name": "Turkmenistan",
-    "code": "tm",
-    "difficulty": 2
-  },
-  {
-    "name": "Turks and Caicos Islands",
-    "code": "tc",
-    "difficulty": 3
-  },
-  {
-    "name": "Tuvalu",
-    "code": "tv",
-    "difficulty": 3
-  },
-  {
-    "name": "Uganda",
-    "code": "ug",
-    "difficulty": 2
-  },
-  {
-    "name": "Ukraine",
-    "code": "ua",
-    "difficulty": 1
-  },
-  {
-    "name": "United Arab Emirates",
-    "code": "ae",
-    "difficulty": 2
-  },
-  {
-    "name": "United Kingdom",
-    "code": "gb",
-    "difficulty": 1
-  },
-  {
-    "name": "United States",
-    "code": "us",
-    "difficulty": 1
-  },
-  {
-    "name": "United States Minor Outlying Islands",
-    "code": "um",
-    "difficulty": 3
-  },
-  {
-    "name": "United States Virgin Islands",
-    "code": "vi",
-    "difficulty": 3
-  },
-  {
-    "name": "Uruguay",
-    "code": "uy",
-    "difficulty": 2
-  },
-  {
-    "name": "Uzbekistan",
-    "code": "uz",
-    "difficulty": 2
-  },
-  {
-    "name": "Vanuatu",
-    "code": "vu",
-    "difficulty": 3
-  },
-  {
-    "name": "Vatican City",
-    "code": "va",
-    "difficulty": 3
-  },
-  {
-    "name": "Venezuela",
-    "code": "ve",
-    "difficulty": 1
-  },
-  {
-    "name": "Vietnam",
-    "code": "vn",
-    "difficulty": 2
-  },
-  {
-    "name": "Wallis and Futuna",
-    "code": "wf",
-    "difficulty": 3
-  },
-  {
-    "name": "Western Sahara",
-    "code": "eh",
-    "difficulty": 2
-  },
-  {
-    "name": "Yemen",
-    "code": "ye",
-    "difficulty": 1
-  },
-  {
-    "name": "Zambia",
-    "code": "zm",
-    "difficulty": 1
-  },
-  {
-    "name": "Zimbabwe",
-    "code": "zw",
-    "difficulty": 2
-  }
+  { name: "Afghanistan", nameFa: "افغانستان", code: "af", difficulty: 1 },
+  { name: "Åland Islands", nameFa: "جزایر آلاند", code: "ax", difficulty: 3 },
+  { name: "Albania", nameFa: "آلبانی", code: "al", difficulty: 2 },
+  { name: "Algeria", nameFa: "الجزایر", code: "dz", difficulty: 1 },
+  { name: "American Samoa", nameFa: "ساموآی آمریکا", code: "as", difficulty: 3 },
+  { name: "Andorra", nameFa: "آندورا", code: "ad", difficulty: 3 },
+  { name: "Angola", nameFa: "آنگولا", code: "ao", difficulty: 3 },
+  { name: "Anguilla", nameFa: "آنگویلا", code: "ai", difficulty: 3 },
+  { name: "Antarctica", nameFa: "جنوبگان", code: "aq", difficulty: 1 },
+  { name: "Antigua and Barbuda", nameFa: "آنتیگوا و باربودا", code: "ag", difficulty: 3 },
+  { name: "Argentina", nameFa: "آرژانتین", code: "ar", difficulty: 1 },
+  { name: "Armenia", nameFa: "ارمنستان", code: "am", difficulty: 2 },
+  { name: "Aruba", nameFa: "آروبا", code: "aw", difficulty: 3 },
+  { name: "Australia", nameFa: "استرالیا", code: "au", difficulty: 1 },
+  { name: "Austria", nameFa: "اتریش", code: "at", difficulty: 1 },
+  { name: "Azerbaijan", nameFa: "آذربایجان", code: "az", difficulty: 2 },
+  { name: "Bahamas", nameFa: "باهاما", code: "bs", difficulty: 2 },
+  { name: "Bahrain", nameFa: "بحرین", code: "bh", difficulty: 3 },
+  { name: "Bangladesh", nameFa: "بنگلادش", code: "bd", difficulty: 2 },
+  { name: "Barbados", nameFa: "باربادوس", code: "bb", difficulty: 3 },
+  { name: "Belarus", nameFa: "بلاروس", code: "by", difficulty: 2 },
+  { name: "Belgium", nameFa: "بلژیک", code: "be", difficulty: 1 },
+  { name: "Belize", nameFa: "بلیز", code: "bz", difficulty: 2 },
+  { name: "Benin", nameFa: "بنین", code: "bj", difficulty: 2 },
+  { name: "Bermuda", nameFa: "برمودا", code: "bm", difficulty: 3 },
+  { name: "Bhutan", nameFa: "بوتان", code: "bt", difficulty: 2 },
+  { name: "Bolivia", nameFa: "بولیوی", code: "bo", difficulty: 1 },
+  { name: "Bosnia and Herzegovina", nameFa: "بوسنی و هرزگوین", code: "ba", difficulty: 2 },
+  { name: "Botswana", nameFa: "بوتسوانا", code: "bw", difficulty: 1 },
+  { name: "Bouvet Island", nameFa: "جزیره بووه", code: "bv", difficulty: 3 },
+  { name: "Brazil", nameFa: "برزیل", code: "br", difficulty: 1 },
+  { name: "British Indian Ocean Territory", nameFa: "قلمرو اقیانوس هند بریتانیا", code: "io", difficulty: 3 },
+  { name: "British Virgin Islands", nameFa: "جزایر ویرجین بریتانیا", code: "vg", difficulty: 3 },
+  { name: "Brunei", nameFa: "برونئی", code: "bn", difficulty: 3 },
+  { name: "Bulgaria", nameFa: "بلغارستان", code: "bg", difficulty: 2 },
+  { name: "Burkina Faso", nameFa: "بورکینافاسو", code: "bf", difficulty: 2 },
+  { name: "Burundi", nameFa: "بوروندی", code: "bi", difficulty: 3 },
+  { name: "Cambodia", nameFa: "کامبوج", code: "kh", difficulty: 2 },
+  { name: "Cameroon", nameFa: "کامرون", code: "cm", difficulty: 2 },
+  { name: "Canada", nameFa: "کانادا", code: "ca", difficulty: 1 },
+  { name: "Cape Verde", nameFa: "کابو ورده", code: "cv", difficulty: 3 },
+  { name: "Caribbean Netherlands", nameFa: "کارائیب هلند", code: "bq", difficulty: 3 },
+  { name: "Cayman Islands", nameFa: "جزایر کیمن", code: "ky", difficulty: 3 },
+  { name: "Central African Republic", nameFa: "جمهوری آفریقای مرکزی", code: "cf", difficulty: 1 },
+  { name: "Chad", nameFa: "چاد", code: "td", difficulty: 1 },
+  { name: "Chile", nameFa: "شیلی", code: "cl", difficulty: 1 },
+  { name: "China", nameFa: "چین", code: "cn", difficulty: 1 },
+  { name: "Christmas Island", nameFa: "جزیره کریسمس", code: "cx", difficulty: 3 },
+  { name: "Cocos (Keeling) Islands", nameFa: "جزایر کوکوس", code: "cc", difficulty: 3 },
+  { name: "Colombia", nameFa: "کلمبیا", code: "co", difficulty: 1 },
+  { name: "Comoros", nameFa: "کومور", code: "km", difficulty: 3 },
+  { name: "Congo", nameFa: "کنگو", code: "cg", difficulty: 2 },
+  { name: "Cook Islands", nameFa: "جزایر کوک", code: "ck", difficulty: 3 },
+  { name: "Costa Rica", nameFa: "کاستاریکا", code: "cr", difficulty: 2 },
+  { name: "Croatia", nameFa: "کرواسی", code: "hr", difficulty: 2 },
+  { name: "Cuba", nameFa: "کوبا", code: "cu", difficulty: 2 },
+  { name: "Curaçao", nameFa: "کوراسائو", code: "cw", difficulty: 3 },
+  { name: "Cyprus", nameFa: "قبرس", code: "cy", difficulty: 3 },
+  { name: "Czechia", nameFa: "چک", code: "cz", difficulty: 2 },
+  { name: "Denmark", nameFa: "دانمارک", code: "dk", difficulty: 1 },
+  { name: "Djibouti", nameFa: "جیبوتی", code: "dj", difficulty: 3 },
+  { name: "Dominica", nameFa: "دومینیکا", code: "dm", difficulty: 3 },
+  { name: "Dominican Republic", nameFa: "جمهوری دومینیکن", code: "do", difficulty: 2 },
+  { name: "DR Congo", nameFa: "کنگو - کینشاسا", code: "cd", difficulty: 1 },
+  { name: "Ecuador", nameFa: "اکوادور", code: "ec", difficulty: 2 },
+  { name: "Egypt", nameFa: "مصر", code: "eg", difficulty: 1 },
+  { name: "El Salvador", nameFa: "السالوادور", code: "sv", difficulty: 2 },
+  { name: "Equatorial Guinea", nameFa: "گینه استوایی", code: "gq", difficulty: 3 },
+  { name: "Eritrea", nameFa: "اریتره", code: "er", difficulty: 3 },
+  { name: "Estonia", nameFa: "استونی", code: "ee", difficulty: 2 },
+  { name: "Eswatini", nameFa: "اسواتینی", code: "sz", difficulty: 3 },
+  { name: "Ethiopia", nameFa: "اتیوپی", code: "et", difficulty: 1 },
+  { name: "Falkland Islands", nameFa: "جزایر فالکلند", code: "fk", difficulty: 3 },
+  { name: "Faroe Islands", nameFa: "جزایر فارو", code: "fo", difficulty: 3 },
+  { name: "Fiji", nameFa: "فیجی", code: "fj", difficulty: 2 },
+  { name: "Finland", nameFa: "فنلاند", code: "fi", difficulty: 1 },
+  { name: "France", nameFa: "فرانسه", code: "fr", difficulty: 1 },
+  { name: "French Guiana", nameFa: "گویان فرانسه", code: "gf", difficulty: 2 },
+  { name: "French Polynesia", nameFa: "پلی‌نزی فرانسه", code: "pf", difficulty: 3 },
+  { name: "French Southern and Antarctic Lands", nameFa: "سرزمین‌های جنوبی فرانسه", code: "tf", difficulty: 3 },
+  { name: "Gabon", nameFa: "گابن", code: "ga", difficulty: 2 },
+  { name: "Gambia", nameFa: "گامبیا", code: "gm", difficulty: 2 },
+  { name: "Georgia", nameFa: "گرجستان", code: "ge", difficulty: 2 },
+  { name: "Germany", nameFa: "آلمان", code: "de", difficulty: 1 },
+  { name: "Ghana", nameFa: "غنا", code: "gh", difficulty: 2 },
+  { name: "Gibraltar", nameFa: "جبل الطارق", code: "gi", difficulty: 3 },
+  { name: "Greece", nameFa: "یونان", code: "gr", difficulty: 1 },
+  { name: "Greenland", nameFa: "گرینلند", code: "gl", difficulty: 3 },
+  { name: "Grenada", nameFa: "گرنادا", code: "gd", difficulty: 3 },
+  { name: "Guadeloupe", nameFa: "گوادلوپ", code: "gp", difficulty: 3 },
+  { name: "Guam", nameFa: "گوام", code: "gu", difficulty: 3 },
+  { name: "Guatemala", nameFa: "گواتمالا", code: "gt", difficulty: 2 },
+  { name: "Guernsey", nameFa: "گرنزی", code: "gg", difficulty: 3 },
+  { name: "Guinea", nameFa: "گینه", code: "gn", difficulty: 2 },
+  { name: "Guinea-Bissau", nameFa: "گینه بیسائو", code: "gw", difficulty: 3 },
+  { name: "Guyana", nameFa: "گویان", code: "gy", difficulty: 2 },
+  { name: "Haiti", nameFa: "هائیتی", code: "ht", difficulty: 2 },
+  { name: "Heard Island and McDonald Islands", nameFa: "جزیره هرد و جزایر مک‌دونالد", code: "hm", difficulty: 3 },
+  { name: "Honduras", nameFa: "هندوراس", code: "hn", difficulty: 2 },
+  { name: "Hong Kong", nameFa: "هنگ‌کنگ", code: "hk", difficulty: 3 },
+  { name: "Hungary", nameFa: "مجارستان", code: "hu", difficulty: 2 },
+  { name: "Iceland", nameFa: "ایسلند", code: "is", difficulty: 2 },
+  { name: "India", nameFa: "هند", code: "in", difficulty: 1 },
+  { name: "Indonesia", nameFa: "اندونزی", code: "id", difficulty: 1 },
+  { name: "Iran", nameFa: "ایران", code: "ir", difficulty: 1 },
+  { name: "Iraq", nameFa: "عراق", code: "iq", difficulty: 2 },
+  { name: "Ireland", nameFa: "ایرلند", code: "ie", difficulty: 2 },
+  { name: "Isle of Man", nameFa: "جزیره من", code: "im", difficulty: 3 },
+  { name: "Israel", nameFa: "اسرائیل", code: "il", difficulty: 2 },
+  { name: "Italy", nameFa: "ایتالیا", code: "it", difficulty: 1 },
+  { name: "Ivory Coast", nameFa: "ساحل عاج", code: "ci", difficulty: 2 },
+  { name: "Jamaica", nameFa: "جامائیکا", code: "jm", difficulty: 2 },
+  { name: "Japan", nameFa: "ژاپن", code: "jp", difficulty: 1 },
+  { name: "Jersey", nameFa: "جرزی", code: "je", difficulty: 3 },
+  { name: "Jordan", nameFa: "اردن", code: "jo", difficulty: 2 },
+  { name: "Kazakhstan", nameFa: "قزاقستان", code: "kz", difficulty: 1 },
+  { name: "Kenya", nameFa: "کنیا", code: "ke", difficulty: 1 },
+  { name: "Kiribati", nameFa: "کیریباتی", code: "ki", difficulty: 3 },
+  { name: "Kosovo", nameFa: "کوزوو", code: "xk", difficulty: 3 },
+  { name: "Kuwait", nameFa: "کویت", code: "kw", difficulty: 2 },
+  { name: "Kyrgyzstan", nameFa: "قرقیزستان", code: "kg", difficulty: 2 },
+  { name: "Laos", nameFa: "لائوس", code: "la", difficulty: 2 },
+  { name: "Latvia", nameFa: "لتونی", code: "lv", difficulty: 2 },
+  { name: "Lebanon", nameFa: "لبنان", code: "lb", difficulty: 2 },
+  { name: "Lesotho", nameFa: "لسوتو", code: "ls", difficulty: 3 },
+  { name: "Liberia", nameFa: "لیبریا", code: "lr", difficulty: 2 },
+  { name: "Libya", nameFa: "لیبی", code: "ly", difficulty: 1 },
+  { name: "Liechtenstein", nameFa: "لیختن‌اشتاین", code: "li", difficulty: 3 },
+  { name: "Lithuania", nameFa: "لیتوانی", code: "lt", difficulty: 2 },
+  { name: "Luxembourg", nameFa: "لوکزامبورگ", code: "lu", difficulty: 3 },
+  { name: "Macau", nameFa: "ماکائو", code: "mo", difficulty: 3 },
+  { name: "Madagascar", nameFa: "ماداگاسکار", code: "mg", difficulty: 1 },
+  { name: "Malawi", nameFa: "مالاوی", code: "mw", difficulty: 3 },
+  { name: "Malaysia", nameFa: "مالزی", code: "my", difficulty: 2 },
+  { name: "Maldives", nameFa: "مالدیو", code: "mv", difficulty: 3 },
+  { name: "Mali", nameFa: "مالی", code: "ml", difficulty: 1 },
+  { name: "Malta", nameFa: "مالت", code: "mt", difficulty: 3 },
+  { name: "Marshall Islands", nameFa: "جزایر مارشال", code: "mh", difficulty: 3 },
+  { name: "Martinique", nameFa: "مارتینیک", code: "mq", difficulty: 3 },
+  { name: "Mauritania", nameFa: "موریتانی", code: "mr", difficulty: 1 },
+  { name: "Mauritius", nameFa: "موریس", code: "mu", difficulty: 3 },
+  { name: "Mayotte", nameFa: "مایوت", code: "yt", difficulty: 3 },
+  { name: "Mexico", nameFa: "مکزیک", code: "mx", difficulty: 1 },
+  { name: "Micronesia", nameFa: "میکرونزی", code: "fm", difficulty: 3 },
+  { name: "Moldova", nameFa: "مولداوی", code: "md", difficulty: 2 },
+  { name: "Monaco", nameFa: "موناکو", code: "mc", difficulty: 3 },
+  { name: "Mongolia", nameFa: "مغولستان", code: "mn", difficulty: 1 },
+  { name: "Montenegro", nameFa: "مونته‌نگرو", code: "me", difficulty: 2 },
+  { name: "Montserrat", nameFa: "مونتسرات", code: "ms", difficulty: 3 },
+  { name: "Morocco", nameFa: "مراکش", code: "ma", difficulty: 2 },
+  { name: "Mozambique", nameFa: "موزامبیک", code: "mz", difficulty: 1 },
+  { name: "Myanmar", nameFa: "میانمار", code: "mm", difficulty: 1 },
+  { name: "Namibia", nameFa: "نامیبیا", code: "na", difficulty: 1 },
+  { name: "Nauru", nameFa: "نائورو", code: "nr", difficulty: 3 },
+  { name: "Nepal", nameFa: "نپال", code: "np", difficulty: 2 },
+  { name: "Netherlands", nameFa: "هلند", code: "nl", difficulty: 1 },
+  { name: "New Caledonia", nameFa: "کالدونیای جدید", code: "nc", difficulty: 2 },
+  { name: "New Zealand", nameFa: "نیوزیلند", code: "nz", difficulty: 2 },
+  { name: "Nicaragua", nameFa: "نیکاراگوئه", code: "ni", difficulty: 2 },
+  { name: "Niger", nameFa: "نیجر", code: "ne", difficulty: 1 },
+  { name: "Nigeria", nameFa: "نیجریه", code: "ng", difficulty: 1 },
+  { name: "Niue", nameFa: "نیوئه", code: "nu", difficulty: 3 },
+  { name: "Norfolk Island", nameFa: "جزیره نورفولک", code: "nf", difficulty: 3 },
+  { name: "North Korea", nameFa: "کره شمالی", code: "kp", difficulty: 2 },
+  { name: "North Macedonia", nameFa: "شمال مقدونیه", code: "mk", difficulty: 2 },
+  { name: "Northern Mariana Islands", nameFa: "جزایر ماریانای شمالی", code: "mp", difficulty: 3 },
+  { name: "Norway", nameFa: "نروژ", code: "no", difficulty: 1 },
+  { name: "Oman", nameFa: "عمان", code: "om", difficulty: 2 },
+  { name: "Pakistan", nameFa: "پاکستان", code: "pk", difficulty: 1 },
+  { name: "Palau", nameFa: "پالائو", code: "pw", difficulty: 3 },
+  { name: "Palestine", nameFa: "فلسطین", code: "ps", difficulty: 3 },
+  { name: "Panama", nameFa: "پاناما", code: "pa", difficulty: 2 },
+  { name: "Papua New Guinea", nameFa: "پاپوآ گینه نو", code: "pg", difficulty: 2 },
+  { name: "Paraguay", nameFa: "پاراگوئه", code: "py", difficulty: 2 },
+  { name: "Peru", nameFa: "پرو", code: "pe", difficulty: 1 },
+  { name: "Philippines", nameFa: "فیلیپین", code: "ph", difficulty: 2 },
+  { name: "Pitcairn Islands", nameFa: "جزایر پیت‌کرن", code: "pn", difficulty: 3 },
+  { name: "Poland", nameFa: "لهستان", code: "pl", difficulty: 2 },
+  { name: "Portugal", nameFa: "پرتغال", code: "pt", difficulty: 2 },
+  { name: "Puerto Rico", nameFa: "پورتوریکو", code: "pr", difficulty: 3 },
+  { name: "Qatar", nameFa: "قطر", code: "qa", difficulty: 2 },
+  { name: "Réunion", nameFa: "رئونیون", code: "re", difficulty: 3 },
+  { name: "Romania", nameFa: "رومانی", code: "ro", difficulty: 2 },
+  { name: "Russia", nameFa: "روسیه", code: "ru", difficulty: 1 },
+  { name: "Rwanda", nameFa: "رواندا", code: "rw", difficulty: 2 },
+  { name: "Saint Barthélemy", nameFa: "سن بارتلمی", code: "bl", difficulty: 3 },
+  { name: "Saint Helena, Ascension and Tristan da Cunha", nameFa: "سنت هلنا", code: "sh", difficulty: 3 },
+  { name: "Saint Kitts and Nevis", nameFa: "سنت کیتس و نویس", code: "kn", difficulty: 3 },
+  { name: "Saint Lucia", nameFa: "سنت لوسیا", code: "lc", difficulty: 3 },
+  { name: "Saint Martin", nameFa: "سنت مارتین", code: "mf", difficulty: 3 },
+  { name: "Saint Pierre and Miquelon", nameFa: "سنت پیر و میکلون", code: "pm", difficulty: 3 },
+  { name: "Saint Vincent and the Grenadines", nameFa: "سنت وینسنت و گرنادین‌ها", code: "vc", difficulty: 3 },
+  { name: "Samoa", nameFa: "ساموآ", code: "ws", difficulty: 3 },
+  { name: "San Marino", nameFa: "سن مارینو", code: "sm", difficulty: 3 },
+  { name: "São Tomé and Príncipe", nameFa: "سائوتومه و پرینسیپ", code: "st", difficulty: 3 },
+  { name: "Saudi Arabia", nameFa: "عربستان سعودی", code: "sa", difficulty: 1 },
+  { name: "Senegal", nameFa: "سنگال", code: "sn", difficulty: 2 },
+  { name: "Serbia", nameFa: "صربستان", code: "rs", difficulty: 2 },
+  { name: "Seychelles", nameFa: "سیشل", code: "sc", difficulty: 3 },
+  { name: "Sierra Leone", nameFa: "سیرالئون", code: "sl", difficulty: 2 },
+  { name: "Singapore", nameFa: "سنگاپور", code: "sg", difficulty: 3 },
+  { name: "Sint Maarten", nameFa: "سنت مارتن", code: "sx", difficulty: 3 },
+  { name: "Slovakia", nameFa: "اسلواکی", code: "sk", difficulty: 2 },
+  { name: "Slovenia", nameFa: "اسلوونی", code: "si", difficulty: 2 },
+  { name: "Solomon Islands", nameFa: "جزایر سلیمان", code: "sb", difficulty: 2 },
+  { name: "Somalia", nameFa: "سومالی", code: "so", difficulty: 3 },
+  { name: "South Africa", nameFa: "آفریقای جنوبی", code: "za", difficulty: 1 },
+  { name: "South Georgia", nameFa: "جورجیای جنوبی", code: "gs", difficulty: 3 },
+  { name: "South Korea", nameFa: "کره جنوبی", code: "kr", difficulty: 1 },
+  { name: "South Sudan", nameFa: "سودان جنوبی", code: "ss", difficulty: 1 },
+  { name: "Spain", nameFa: "اسپانیا", code: "es", difficulty: 1 },
+  { name: "Sri Lanka", nameFa: "سری‌لانکا", code: "lk", difficulty: 2 },
+  { name: "Sudan", nameFa: "سودان", code: "sd", difficulty: 1 },
+  { name: "Suriname", nameFa: "سورینام", code: "sr", difficulty: 2 },
+  { name: "Svalbard and Jan Mayen", nameFa: "اسوالبارد و یان ماین", code: "sj", difficulty: 3 },
+  { name: "Sweden", nameFa: "سوئد", code: "se", difficulty: 1 },
+  { name: "Switzerland", nameFa: "سوئیس", code: "ch", difficulty: 1 },
+  { name: "Syria", nameFa: "سوریه", code: "sy", difficulty: 2 },
+  { name: "Taiwan", nameFa: "تایوان", code: "tw", difficulty: 2 },
+  { name: "Tajikistan", nameFa: "تاجیکستان", code: "tj", difficulty: 2 },
+  { name: "Tanzania", nameFa: "تانزانیا", code: "tz", difficulty: 1 },
+  { name: "Thailand", nameFa: "تایلند", code: "th", difficulty: 1 },
+  { name: "Timor-Leste", nameFa: "تیمور شرقی", code: "tl", difficulty: 2 },
+  { name: "Togo", nameFa: "توگو", code: "tg", difficulty: 3 },
+  { name: "Tokelau", nameFa: "توکلائو", code: "tk", difficulty: 3 },
+  { name: "Tonga", nameFa: "تونگا", code: "to", difficulty: 3 },
+  { name: "Trinidad and Tobago", nameFa: "ترینیداد و توباگو", code: "tt", difficulty: 3 },
+  { name: "Tunisia", nameFa: "تونس", code: "tn", difficulty: 2 },
+  { name: "Türkiye", nameFa: "ترکیه", code: "tr", difficulty: 1 },
+  { name: "Turkmenistan", nameFa: "ترکمنستان", code: "tm", difficulty: 2 },
+  { name: "Turks and Caicos Islands", nameFa: "جزایر تورکس و کایکوس", code: "tc", difficulty: 3 },
+  { name: "Tuvalu", nameFa: "تووالو", code: "tv", difficulty: 3 },
+  { name: "Uganda", nameFa: "اوگاندا", code: "ug", difficulty: 2 },
+  { name: "Ukraine", nameFa: "اوکراین", code: "ua", difficulty: 1 },
+  { name: "United Arab Emirates", nameFa: "امارات متحده عربی", code: "ae", difficulty: 2 },
+  { name: "United Kingdom", nameFa: "بریتانیا", code: "gb", difficulty: 1 },
+  { name: "United States", nameFa: "ایالات متحده آمریکا", code: "us", difficulty: 1 },
+  { name: "United States Minor Outlying Islands", nameFa: "جزایر کوچک دور ایالات متحده", code: "um", difficulty: 3 },
+  { name: "United States Virgin Islands", nameFa: "جزایر ویرجین ایالات متحده", code: "vi", difficulty: 3 },
+  { name: "Uruguay", nameFa: "اروگوئه", code: "uy", difficulty: 2 },
+  { name: "Uzbekistan", nameFa: "ازبکستان", code: "uz", difficulty: 2 },
+  { name: "Vanuatu", nameFa: "وانواتو", code: "vu", difficulty: 3 },
+  { name: "Vatican City", nameFa: "واتیکان", code: "va", difficulty: 3 },
+  { name: "Venezuela", nameFa: "ونزوئلا", code: "ve", difficulty: 1 },
+  { name: "Vietnam", nameFa: "ویتنام", code: "vn", difficulty: 2 },
+  { name: "Wallis and Futuna", nameFa: "والیس و فوتونا", code: "wf", difficulty: 3 },
+  { name: "Western Sahara", nameFa: "صحرای غربی", code: "eh", difficulty: 2 },
+  { name: "Yemen", nameFa: "یمن", code: "ye", difficulty: 1 },
+  { name: "Zambia", nameFa: "زامبیا", code: "zm", difficulty: 1 },
+  { name: "Zimbabwe", nameFa: "زیمبابوه", code: "zw", difficulty: 2 }
 ];
 
 export const UNIQUE_COUNTRIES = Array.from(new Map(COUNTRIES.map(c => [c.code, c])).values());

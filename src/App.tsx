@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGameState } from './hooks/useGameState';
 import { MainMenu } from './components/MainMenu';
 import { GameView } from './components/GameView';
@@ -9,7 +9,6 @@ import { Aurora } from './components/Aurora';
 import { SpotlightCard } from './components/SpotlightCard';
 import { SettingsModal } from './components/SettingsModal';
 import { FlagOrbitSystem } from './components/FlagOrbitSystem';
-
 import { StatsModal } from './components/StatsModal';
 
 export default function App() {
@@ -34,6 +33,15 @@ export default function App() {
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isStatsOpen, setIsStatsOpen] = useState(false);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('flag_guesser_scale');
+      if (saved) {
+        document.documentElement.style.setProperty('--ui-scale', saved);
+      }
+    } catch (e) {}
+  }, []);
 
   return (
     <div className="relative min-h-screen flex items-center justify-center p-4 bg-black text-white selection:bg-indigo-500/30 overflow-hidden font-sans">
@@ -132,7 +140,7 @@ export default function App() {
 
       <SettingsModal 
         isOpen={isSettingsOpen} 
-        onClose={() => setIsSettingsOpen(false)} 
+        onClose={() => setIsSettingsOpen(false)}
         playerName={playerName}
         setPlayerName={setPlayerName}
       />

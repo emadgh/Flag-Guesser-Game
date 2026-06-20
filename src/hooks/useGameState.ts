@@ -3,7 +3,7 @@ import { GameMode, GameState, Difficulty } from '../types';
 import { UNIQUE_COUNTRIES, Country, getFlagUrl } from '../data/countries';
 import { audioManager } from '../lib/audio';
 import { addScore } from '../lib/leaderboard';
-import { recordStat } from '../lib/statistics';
+import { recordStat, getMasteredCodes } from '../lib/statistics';
 
 const STARTING_TIME = 15;
 
@@ -17,17 +17,31 @@ export const useGameState = () => {
   const [timeLeft, setTimeLeft] = useState(STARTING_TIME);
   const [currentCountry, setCurrentCountry] = useState<Country | null>(null);
   const [options, setOptions] = useState<Country[]>([]);
-  const [playerName, setPlayerName] = useState('Player');
+  const [playerName, setPlayerNameState] = useState(() => {
+    try {
+      return localStorage.getItem('flag_guesser_player') || 'Player';
+    } catch (e) {
+      return 'Player';
+    }
+  });
   
   // feedback visual state
   const [feedback, setFeedback] = useState<'NONE' | 'CORRECT' | 'WRONG'>('NONE');
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+
+  const setPlayerName = useCallback((name: string) => {
+    setPlayerNameState(name);
+    try {
+      localStorage.setItem('flag_guesser_player', name);
+    } catch (e) {}
+  }, []);
   
   const recentCountries = useRef<string[]>([]);
 
   const generateQuestion = useCallback(async (forcedMode?: GameMode, forcedDifficulty?: Difficulty) => {
     const activeMode = forcedMode || mode;
     const activeDiff = forcedDifficulty || difficulty;
+    const mastered = getMasteredCodes();
 
     let targetRank = 1;
     const r = Math.random();
@@ -51,7 +65,8 @@ export const useGameState = () => {
       targetRank = r < 0.2 ? 2 : 3;
     }
 
-    let basePool = UNIQUE_COUNTRIES.filter(c => c.difficulty === targetRank);
+    let basePool = UNIQUE_COUNTRIES.filter(c => c.difficulty === targetRank && !mastered.has(c.code));
+    if (basePool.length < 4) basePool = UNIQUE_COUNTRIES.filter(c => !mastered.has(c.code));
     if (basePool.length < 4) basePool = UNIQUE_COUNTRIES; // safety fallback
 
     // Filter out recently asked countries to prevent repetition
@@ -103,12 +118,12 @@ export const useGameState = () => {
   const handleGameOver = useCallback(() => {
     setGameState('GAME_OVER');
     if (score > 0) {
-       addScore({
-         playerName,
-         mode,
-         difficulty,
-         score
-       });
+      addScore({
+        playerName,
+        mode,
+        difficulty,
+        score
+      });
     }
   }, [score, playerName, mode, difficulty]);
 

@@ -22,7 +22,7 @@ export const addScore = (entry: Omit<ScoreEntry, 'id' | 'date'>) => {
     date: Date.now(),
   };
   
-  const updated = [...current, newEntry].sort((a, b) => b.score - a.score).slice(0, 50); // Keep top 50
+  const updated = [...current, newEntry].sort((a, b) => b.score - a.score).slice(0, 50);
   
   try {
     localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(updated));
