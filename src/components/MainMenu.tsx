@@ -22,7 +22,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
   initialDifficulty
 }) => {
   const [difficulty, setDifficulty] = useState<Difficulty>(initialDifficulty);
-  const { t } = useI18n();
+  const { t, dir } = useI18n();
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -91,13 +91,15 @@ export const MainMenu: React.FC<MainMenuProps> = ({
       >
         <div className="flex flex-col gap-2 mb-6">
           <label className="text-zinc-400 text-sm font-medium uppercase tracking-wider text-center">{t.selectDifficulty}</label>
-          <div className="flex bg-zinc-900 border border-zinc-800 rounded-xl p-1 relative shadow-inner">
+          <div className="flex bg-zinc-900 border border-zinc-800 rounded-xl p-1 relative shadow-inner overflow-hidden">
             <motion.div 
-              className="absolute top-1 bottom-1 rounded-lg"
+              className="absolute top-1 bottom-1 left-0 rounded-lg"
               initial={false}
               animate={{
                 width: '25%',
-                x: difficulty === 1 ? '0%' : difficulty === 2 ? '100%' : difficulty === 3 ? '200%' : '300%',
+                x: dir === 'rtl'
+                  ? `${(4 - difficulty) * 100}%`
+                  : `${(difficulty - 1) * 100}%`,
                 backgroundColor: difficulty === 1 ? '#10b981' : difficulty === 2 ? '#f59e0b' : difficulty === 3 ? '#f43f5e' : '#a855f7'
               }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}

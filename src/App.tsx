@@ -44,7 +44,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center p-4 bg-black text-white selection:bg-indigo-500/30 overflow-hidden font-sans">
+    <div className="relative min-h-screen flex items-center justify-center p-4 bg-black text-white selection:bg-indigo-500/30 overflow-hidden">
       <Aurora />
 
       <AnimatePresence>
