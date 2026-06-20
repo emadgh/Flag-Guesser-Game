@@ -67,7 +67,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
 
       <div className="mb-10 text-center relative z-20">
         <BlurText 
-          text={t.title} 
+          text="Flag Guesser" 
           delay={50} 
           animateBy="letters" 
           direction="top" 

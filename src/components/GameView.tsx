@@ -29,6 +29,13 @@ export const GameView: React.FC<GameViewProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const { t, language } = useI18n();
 
+  const getDisplayName = (country: Country, currentMode: GameMode) => {
+    if (language === 'fa' && currentMode !== 'WRITE') {
+      return `${country.name}\n${country.nameFa}`;
+    }
+    return getCountryName(country, language);
+  };
+
   useEffect(() => {
     setInputValue('');
     if (mode === 'WRITE' && inputRef.current) {
@@ -149,8 +156,8 @@ export const GameView: React.FC<GameViewProps> = ({
             {mode === 'REVERSE' ? (
               <div className="mb-10 text-center flex flex-col items-center justify-center min-h-[140px]">
                 <BlurText 
-                  text={getCountryName(currentCountry, language)} 
-                  className="text-4xl sm:text-5xl font-black text-white px-2 text-center" 
+                  text={getDisplayName(currentCountry, mode)} 
+                  className="text-4xl sm:text-5xl font-black text-white px-2 text-center whitespace-pre-line" 
                   animateBy="words" 
                 />
               </div>
@@ -177,9 +184,9 @@ export const GameView: React.FC<GameViewProps> = ({
                         <motion.span 
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
-                          className="text-white font-bold text-xl px-5 py-3 bg-black/80 rounded-xl backdrop-blur-md shadow-2xl text-center"
+                          className="text-white font-bold text-xl px-5 py-3 bg-black/80 rounded-xl backdrop-blur-md shadow-2xl text-center whitespace-pre-line"
                         >
-                          {getCountryName(currentCountry, language)}
+                          {getDisplayName(currentCountry, mode)}
                         </motion.span>
                       )}
                     </motion.div>
@@ -279,7 +286,7 @@ export const GameView: React.FC<GameViewProps> = ({
                       >
                         <div className="flex items-center gap-3 w-full pointer-events-auto">
                           <span className="text-[10px] font-mono text-zinc-600 bg-zinc-800 px-1.5 py-0.5 rounded">{i + 1}</span>
-                          <div className="w-full text-start">{getCountryName(opt, language)}</div>
+                          <div className="w-full text-start whitespace-pre-line">{getDisplayName(opt, mode)}</div>
                         </div>
                       </SpotlightButton>
                     )
