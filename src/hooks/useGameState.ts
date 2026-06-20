@@ -110,6 +110,9 @@ export const useGameState = () => {
     setScore(0);
     setHealth(3);
     setStreak(0);
+    setTimeLeft(STARTING_TIME);
+    setFeedback('NONE');
+    setSelectedAnswer(null);
     setGameState('PLAYING');
     recentCountries.current = [];
     generateQuestion(selectedMode, selectedDifficulty);
